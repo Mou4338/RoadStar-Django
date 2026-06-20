@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          cd server
+          pip install -r requirements.txt
+
+      - name: Run migrations and seed data
+        run: |
+          cd server
+          python manage.py migrate --noinput
+          python seed.py
+
+      - name: Run Django system checks
+        run: |
+          cd server
+          python manage.py check
+
+      - name: Start server and smoke-test API
+        run: |
+          cd server
+          python manage.py runserver 0.0.0.0:8000 &
+          sleep 3
+          curl --fail http://127.0.0.1:8000/djangoapp/get_dealers
+          curl --fail http://127.0.0.1:8000/djangoapp/get_cars

@@ -1,12 +1,46 @@
-{% extends "base.html" %}
-{% block title %}Contact Us{% endblock %}
-{% block nav_contact %}active{% endblock %}
-{% block content %}
-<section class="content">
-  <span class="eyebrow">GET IN TOUCH</span>
-  <h1>Contact RoadStar</h1>
-  <p>Email: support@roadstar.example</p>
-  <p>Phone: (800) 555-0199</p>
-  <p>Headquarters: 100 Market Street, Suite 400, Kansas City, KS 66101</p>
-</section>
-{% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Us · RoadStar</title>
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/"><span>R</span>ROADSTAR</a>
+    <nav>
+      <a href="/">Dealers</a>
+      <a href="/about">About Us</a>
+      <a href="/contact" class="active">Contact Us</a>
+      <a href="/login">Log in</a>
+      <a class="nav-cta" href="/register">Sign up</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content contact-layout">
+      <div class="contact-copy">
+        <span class="eyebrow">GET IN TOUCH</span>
+        <h1>Contact RoadStar</h1>
+        <p>Have a question about a dealership, your account, or a review you posted?
+          Our support team is happy to help.</p>
+        <ul class="contact-list">
+          <li><b>Email:</b> support@roadstar.example</li>
+          <li><b>Phone:</b> (800) 555-0199</li>
+          <li><b>Headquarters:</b> 100 Market Street, Suite 400, Kansas City, KS 66101</li>
+          <li><b>Hours:</b> Mon&ndash;Fri, 8am&ndash;6pm CT</li>
+        </ul>
+      </div>
+      <img src="/static/img/contact-office.svg" alt="RoadStar headquarters" class="contact-image">
+    </section>
+  </main>
+
+  <footer>
+    <b>ROADSTAR</b>
+    <span>Driven by trust. Powered by people.</span>
+    <span>&copy; 2026 RoadStar Motors</span>
+  </footer>
+</body>
+</html>

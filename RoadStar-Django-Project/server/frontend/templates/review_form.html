@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Post review{% endblock %}
+{% block content %}
+<section class="form-shell">
+  <div><span class="eyebrow">SHARE YOUR EXPERIENCE</span><h1>Review {{ dealer.full_name }}</h1></div>
+  <form method="post" class="panel">
+    {% csrf_token %}
+    <label>Review<textarea name="review" required></textarea></label>
+    <div class="twocol">
+      <label>Car make<input name="car_make" required></label>
+      <label>Car model<input name="car_model" required></label>
+    </div>
+    <div class="twocol">
+      <label>Model year<input name="car_year" type="number" required></label>
+      <label>Did you purchase?<select name="purchase"><option value="yes">Yes</option><option value="no">No</option></select></label>
+    </div>
+    <button>Submit review</button>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}RoadStar{% endblock %} · RoadStar</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/"><span>R</span>ROADSTAR</a>
+    <nav>
+      <a href="/" class="{% block nav_home %}{% endblock %}">Dealers</a>
+      <a href="/about" class="{% block nav_about %}{% endblock %}">About Us</a>
+      <a href="/contact" class="{% block nav_contact %}{% endblock %}">Contact Us</a>
+      {% if user.is_authenticated %}
+        <span class="welcome">Hi, {{ user.username }}</span>
+        <a href="/logout">Log out</a>
+      {% else %}
+        <a href="/login">Log in</a>
+        <a class="nav-cta" href="/register">Sign up</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>
+    <b>ROADSTAR</b>
+    <span>Driven by trust. Powered by people.</span>
+    <span>&copy; 2026 RoadStar Motors</span>
+  </footer>
+</body>
+</html>

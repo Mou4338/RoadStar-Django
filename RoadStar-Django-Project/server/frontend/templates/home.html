@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Dealers{% endblock %}
+{% block nav_home %}active{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">THE RIGHT CAR. THE RIGHT PEOPLE.</p>
+  <h1>Find a dealer<br><em>you can trust.</em></h1>
+  <p>Explore verified RoadStar locations and real customer experiences across the United States.</p>
+</section>
+<section class="content">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">OUR NETWORK</span>
+      <h2>{% if selected_state %}Dealers in {{ selected_state }}{% else %}All dealerships{% endif %}</h2>
+    </div>
+    <form>
+      <label for="state">Filter by state</label>
+      <select id="state" name="state" onchange="this.form.submit()">
+        <option value="">All states</option>
+        {% for s in states %}
+          <option value="{{ s }}" {% if s == selected_state %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+  <div class="dealer-grid">
+    {% for d in dealers %}
+    <article class="dealer">
+      <div class="dealer-photo"><span>{{ d.state }}</span></div>
+      <div class="dealer-copy">
+        <div class="rating">&#9733; {{ d.rating }}</div>
+        <h2>{{ d.full_name }}</h2>
+        <p>{{ d.address }}, {{ d.city }}, {{ d.state }} {{ d.zip_code }}</p>
+        <p>{{ d.phone }}</p>
+        <div class="actions">
+          <a href="/dealer/{{ d.id }}">View dealer</a>
+          {% if user.is_authenticated %}<a class="review" href="/review/{{ d.id }}">Review dealer</a>{% endif %}
+        </div>
+      </div>
+    </article>
+    {% empty %}
+    <p>No dealers found.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,6 +1,4 @@
-# xrwvm-fullstack_developer_capstone
-
-## Project name: fullstack_developer_capstone
+# Fullstack_developer_capstone
 
 RoadStar is a full-stack dealership capstone application built with Django, SQLite, and React,
 submitted as the final project for the Full Stack Application Development Capstone course.
